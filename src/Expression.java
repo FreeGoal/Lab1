@@ -11,6 +11,7 @@ public class Expression
     int VariableNumber;
     int TermNumber;
     int[][] VariableCount = new int[10][10];
+<<<<<<< HEAD
     ArrayList Variable = new ArrayList();
     int[] Factor = new int[10];
 
@@ -386,6 +387,62 @@ public class Expression
         }
 
     }
+=======
+	ArrayList Variable = new ArrayList();
+	int[] Factor = new int[10];
+	
+	
+	@SuppressWarnings("rawtypes")
+	public static void main(String[] args) {
+		
+		int flag = 0;
+		Expression expr = new Expression();
+		while(true)
+		{
+			InputStreamReader isr = new InputStreamReader(System.in); 
+			BufferedReader bf = new BufferedReader(isr);
+			try{
+				
+				String str = bf.readLine();//input by users
+				//match
+				String reg1 = "!simplify";
+				String reg2 = "!d/d";
+				Pattern pat1 = Pattern.compile(reg1);
+				Matcher mat1 = pat1.matcher(str);
+				Pattern pat2 = Pattern.compile(reg2);
+				Matcher mat2 = pat2.matcher(str);
+				//deal
+				if(mat1.find())
+				{
+					//showexpr(expr);
+					if(flag == 0)
+						System.out.println("Error!");
+					else
+					{
+						expr = simplify(str,expr);
+						showexpr(expr);
+					}
+					
+				}else if(mat2.find())
+				{
+					if(flag == 0)
+						System.out.println("Error!");
+					else
+						expr = derivative(str,expr);
+					showexpr(expr);
+				}else
+				{
+					expr = deal(str,expr);
+					flag = 1;
+					showexpr(expr); 
+				}
+			}catch (IOException e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace(); 
+			}		
+		}
+	}
+>>>>>>> lab4
 
     static void showexpr(Expression show)
     {
