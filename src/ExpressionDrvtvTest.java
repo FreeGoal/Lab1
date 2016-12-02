@@ -28,7 +28,7 @@ public class ExpressionDrvtvTest {
 		String str = "!d/d x";
 		Expression exp = new Expression();
 		exp = exp.derivative(str, smpl);
-		exp.showexpr(exp);
+		OutControl.showexpr(exp);
 		
 		assertEquals(1,exp.VariableCount[0][0]);
 		assertEquals(0,exp.VariableCount[0][1]);
